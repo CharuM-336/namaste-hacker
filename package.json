@@ -1,0 +1,25 @@
+{
+  "name": "namaste-hacker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-native reading platform for transforming books into interactive learning experiences.",
+  "license": "UNLICENSED",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace @namaste-hacker/web",
+    "dev": "npm run dev --workspace @namaste-hacker/web",
+    "lint": "npm run lint --workspace @namaste-hacker/web",
+    "format": "prettier --check .",
+    "format:write": "prettier --write ."
+  },
+  "engines": {
+    "node": ">=20.11.0",
+    "npm": ">=10.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.5"
+  }
+}
