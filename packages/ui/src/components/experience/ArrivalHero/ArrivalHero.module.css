@@ -1,0 +1,31 @@
+// src/components/experience/ArrivalHero/ArrivalHero.module.css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
+  color: var(--color-text-primary);
+}
+
+.container.default {
+  background-color: var(--color-bg-primary);
+}
+
+.container.compact {
+  padding: 1rem;
+}
+
+.title {
+  font-family: var(--font-primary);
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: var(--font-secondary);
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+}

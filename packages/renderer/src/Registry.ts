@@ -39,6 +39,21 @@ export const defaultRegistry = new ComponentRegistry();
 
 // Register a generic placeholder for unknown components
 import { PlaceholderComponent } from "./ErrorBoundary";
+import ArrivalHero from "../../ui/src/components/experience/ArrivalHero/ArrivalHero";
+import ChapterCard from "../../ui/src/components/experience/ChapterCard/ChapterCard";
+import SectionHeading from "../../ui/src/components/experience/SectionHeading/SectionHeading";
+import TextBlock from "../../ui/src/components/experience/TextBlock/TextBlock";
+import Divider from "../../ui/src/components/experience/Divider/Divider";
+
+defaultRegistry.register("unknown", (node, _ctx) => {
+  return React.createElement(PlaceholderComponent, { node });
+});
+
+defaultRegistry.register("arrival-hero", (node, _ctx) => React.createElement(ArrivalHero, node.data));
+defaultRegistry.register("chapter-card", (node, _ctx) => React.createElement(ChapterCard, node.data));
+defaultRegistry.register("section-heading", (node, _ctx) => React.createElement(SectionHeading, node.data));
+defaultRegistry.register("text-block", (node, _ctx) => React.createElement(TextBlock, node.data));
+defaultRegistry.register("divider", (node, _ctx) => React.createElement(Divider, node.data));
 
 defaultRegistry.register("unknown", (node, _ctx) => {
   return React.createElement(PlaceholderComponent, { node });

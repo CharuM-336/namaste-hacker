@@ -1,0 +1,16 @@
+// src/components/experience/SectionHeading/SectionHeading.module.css
+.heading {
+  font-family: var(--font-primary);
+  margin: 0;
+  padding: 0;
+}
+
+.heading.default {
+  color: var(--color-text-primary);
+}
+
+.heading.accent {
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 0.25rem;
+}

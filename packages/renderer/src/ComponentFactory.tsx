@@ -10,8 +10,8 @@ import type { RenderContext } from "./Registry";
  * The map can be extended via registry registration.
  */
 const lazyComponentMap: Record<string, () => Promise<{ default: React.ComponentType<any> }>> = {
-  HeroBanner: () => import("./builtins/HeroBanner.tsx"),
-  Timeline: () => import("./builtins/Timeline.tsx"),
+  HeroBanner: () => import("./builtins/HeroBanner"),
+  Timeline: () => import("./builtins/Timeline"),
   unknown: () => Promise.resolve({ default: () => null }),
 };
 
