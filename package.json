@@ -20,6 +20,8 @@
     "npm": ">=10.0.0"
   },
   "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
     "prettier": "^3.9.5"
   }
 }

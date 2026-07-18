@@ -1,21 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+
+import { AppShell } from "@/components/layout/app-shell";
+import { AppProviders } from "@/components/providers/app-providers";
+import { APP_DESCRIPTION, APP_NAME } from "@/lib/constants";
+import { fontVariables } from "@/lib/fonts";
+
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Namaste Hacker",
-  description:
-    "An AI-native reading platform for interactive, personalized book experiences.",
+  title: APP_NAME,
+  description: APP_DESCRIPTION,
 };
 
 export default function RootLayout({
@@ -26,9 +20,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${fontVariables} h-full`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full bg-background font-sans text-foreground antialiased">
+        <AppProviders>
+          <AppShell>{children}</AppShell>
+        </AppProviders>
+      </body>
     </html>
   );
 }
