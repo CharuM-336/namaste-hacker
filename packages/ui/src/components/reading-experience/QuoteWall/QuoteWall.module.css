@@ -1,0 +1,37 @@
+// src/components/reading-experience/QuoteWall/QuoteWall.module.css
+.quoteWall {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.decorative {
+  border: 2px solid var(--color-primary);
+}
+
+.highlighted {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+}
+
+.text {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+.footer {
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.author {
+  font-weight: 600;
+}
+
+.source {
+  margin-left: 0.5rem;
+}

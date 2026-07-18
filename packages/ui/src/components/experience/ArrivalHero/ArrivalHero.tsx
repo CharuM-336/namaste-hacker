@@ -1,5 +1,6 @@
 // src/components/experience/ArrivalHero/ArrivalHero.tsx
 import React from 'react';
+import { Box } from "@namaste-hacker/ui/design-system/primitives/Box";
 import styles from './ArrivalHero.module.css';
 
 export interface ArrivalHeroProps {

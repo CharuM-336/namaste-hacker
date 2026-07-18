@@ -1,0 +1,27 @@
+// src/components/reading-experience/PullQuote/PullQuote.module.css
+.pullQuote {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.solid {
+  border: none;
+}
+
+.outline {
+  border: 2px solid var(--color-primary);
+  background: transparent;
+}
+
+.text {
+  font-size: var(--font-size-xl3);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+.attribution {
+  font-size: var(--font-size-sm);
+  text-align: right;
+  margin-top: var(--spacing-xs);
+}
