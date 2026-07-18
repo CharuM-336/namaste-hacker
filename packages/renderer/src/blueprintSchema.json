@@ -1,0 +1,38 @@
+// src/blueprintSchema.json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Website Blueprint",
+  "type": "object",
+  "required": ["schemaVersion", "metadata", "world"],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "metadata": {
+      "type": "object",
+      "required": ["bookId", "title", "author", "created"],
+      "properties": {
+        "bookId": { "type": "string" },
+        "title": { "type": "string" },
+        "author": { "type": "string" },
+        "created": { "type": "string", "format": "date-time" },
+        "updated": { "type": "string", "format": "date-time" },
+        "tags": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "world": {
+      "type": "object",
+      "required": ["id", "title", "scenes"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "ambient": { "type": "object" },
+        "theme": { "type": "object" },
+        "progressModel": { "type": "object" },
+        "personalization": { "type": "object" },
+        "scenes": {
+          "type": "array",
+          "items": { "type": "object" }
+        }
+      }
+    }
+  }
+}
