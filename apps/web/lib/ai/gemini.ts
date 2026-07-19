@@ -39,7 +39,7 @@ async function generateJSON(prompt: string): Promise<string> {
   const ai = getClient();
   
   const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash",
+    model: "gemini-flash-latest",
     contents: prompt,
     config: {
       responseMimeType: "application/json",

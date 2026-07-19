@@ -29,33 +29,35 @@ function generateBookId(): string {
 
 async function indexChunks(bookId: string, pageTexts: string[]): Promise<void> {
   const chunks = chunksCollection();
-  const operations: Promise<unknown>[] = [];
+  const chunkData: { content: string; chunkIndex: number; pageRef: number }[] = [];
 
   pageTexts.forEach((pageText, pageIndex) => {
     const pageChunks = chunkText(pageText);
 
     pageChunks.forEach((content, chunkIndex) => {
       if (content.length < 40) return; // Skip near-empty chunks
-
-      const op = createEmbedding(content).then((result) => {
-        if (!result.success) return;
-        return chunks.insertOne({
-          bookId,
-          content,
-          chunkIndex,
-          pageRef: pageIndex + 1,
-          $vector: result.data,
-        });
-      });
-
-      operations.push(op);
+      chunkData.push({ content, chunkIndex, pageRef: pageIndex + 1 });
     });
   });
 
-  // Embed all chunks in parallel (Gemini rate limit: ~60 rpm on free tier)
-  // Batch into groups of 10 to be safe
-  for (let i = 0; i < operations.length; i += 10) {
-    await Promise.all(operations.slice(i, i + 10));
+  // Batch into groups of 10 to safely avoid rate limits
+  for (let i = 0; i < chunkData.length; i += 10) {
+    const batch = chunkData.slice(i, i + 10);
+    const operations = batch.map(async (item) => {
+      const result = await createEmbedding(item.content);
+      if (!result.success) return;
+      return chunks.insertOne({
+        bookId,
+        content: item.content,
+        chunkIndex: item.chunkIndex,
+        pageRef: item.pageRef,
+        $vector: result.data,
+      });
+    });
+
+    await Promise.all(operations);
+    // 500ms delay between batches to respect rate limits gracefully
+    await new Promise((resolve) => setTimeout(resolve, 500));
   }
 }
 
