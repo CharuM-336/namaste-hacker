@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ParsedPDF } from "@/types/book";
 // pdfjs-dist imported dynamically below
 

@@ -107,7 +107,7 @@ export default function ReadingPage() {
         return newMsg;
       });
     }
-  }, [inputText, book]);
+  }, [inputText, book, bookContent]);
 
   const handleSaveQuote = useCallback(
     async (quote: string) => {
