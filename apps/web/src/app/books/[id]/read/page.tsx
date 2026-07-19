@@ -655,7 +655,7 @@ function CompanionPanel({
 
 // ─── Sample text generator ────────────────────────────────────────────────
 
-function generateSampleText(book: Book): string[] {
+export function generateSampleText(book: Book): string[] {
   const samples: Record<string, string[]> = {
     fantasy: [
       "The map had been folded and refolded so many times that the creases had worn through at the corners, leaving small islands of nothing where the mountains should have been. Aldric held it up to the failing light of the lantern and tried to make sense of what remained.",

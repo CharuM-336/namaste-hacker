@@ -8,7 +8,7 @@ import type { AskResult, ServiceResult } from "@/types/book";
 export interface AskInput {
   bookId: string;
   question: string;
-  pageContent?: string;
+  pageContent?: string | undefined;
 }
 
 // ─── Ask service ──────────────────────────────────────────────────────────────
