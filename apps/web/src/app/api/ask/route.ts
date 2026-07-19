@@ -29,7 +29,13 @@ export async function POST(request: NextRequest) {
     return errorResponse(Errors.invalidInput(message));
   }
 
-  const result = await askService.ask(parsed?.data);
+  const input = parsed.data;
+  const result = await askService.ask({
+    bookId: input.bookId,
+    question: input.question,
+    // Only pass pageContent if it actually exists (avoids exactOptionalPropertyTypes error)
+    ...(input.pageContent ? { pageContent: input.pageContent } : {}),
+  });
   if (!result.success) return errorResponse(result.error);
 
   return ok(result.data);

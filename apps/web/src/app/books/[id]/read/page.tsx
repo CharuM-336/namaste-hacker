@@ -653,43 +653,4 @@ function CompanionPanel({
   );
 }
 
-// ─── Sample text generator ────────────────────────────────────────────────
 
-function generateSampleText(book: Book): string[] {
-  const samples: Record<string, string[]> = {
-    fantasy: [
-      "The map had been folded and refolded so many times that the creases had worn through at the corners, leaving small islands of nothing where the mountains should have been. Aldric held it up to the failing light of the lantern and tried to make sense of what remained.",
-      "There were rules about crossing the Bone Meridian, and the first of them was that you did not talk about the crossing while you were still within sight of the last village. The village elders had reasons for this rule, and most of those reasons had names.",
-      "Magic was not a gift. It was an inheritance, like debt — passed down without consent through bloodlines that had long forgotten why they deserved it. Some families had spent generations trying to give it back.",
-      "The dragon had not spoken in eleven years. This was, by dragon standards, considered a very long silence. By human standards it was considered ominous. By the dragon's own estimate, it was simply a very long thought.",
-    ],
-    thriller: [
-      "The file was thinner than she expected. Seventeen pages, three photographs, one name. She had spent four months on this case and this — this thin folder — was everything that remained of a man who had once been everywhere.",
-      "Trust was a currency she'd stopped spending years ago. The economy of her particular life had no use for it. What she traded in instead was information, and right now, she was deeply in debt.",
-      "He'd made three mistakes. The first was leaving a witness. The second was underestimating how long a determined woman could hold a grudge. The third — the one that would define the rest of his considerably shortened life — was coming back.",
-    ],
-    philosophy: [
-      "The question was not what was true. The question was what could be known, and whether the knowing of it was available to creatures constituted as we are — creatures of appetite and fear, of longing and revision, reading the world through the very instruments the world had shaped.",
-      "Every system of ethics begins as an answer to violence. What is justice if not the attempt to replace the logic of strength with something more durable, more imaginable to those who have none?",
-      "To think carefully is to think slowly. This is why thinking carefully has always been unpopular. Slowness is a form of resistance, and people who move quickly have little patience for those who stop.",
-    ],
-    history: [
-      "The city had burned three times in seven hundred years and each time it had been rebuilt slightly differently, as though the memory of the fire had been absorbed into the stone, altering the way the streets ran, the way light fell in the early morning.",
-      "Empires do not collapse. They contract. They retreat, first from the edges, then from the ambitions, then from the very language they used to describe themselves. What falls at the end is only the name.",
-      "She kept the letters in a cedar box that still smelled faintly of the ship that had carried it across an ocean she would never see again. The wood remembered distances that she had trained herself to forget.",
-    ],
-    science: [
-      "The universe, it turned out, was not interested in being understood. It was interested in existing. The understanding was something that happened in a very thin biological layer on a very ordinary planet, and the universe had arranged for this through no intention whatsoever.",
-      "For a long time we believed that complexity required a designer. Then we discovered that complexity was precisely what you got when simple rules ran for long enough without one. This was, to put it gently, unsettling.",
-      "Every atom in your body is older than the solar system. You are constructed of material that has already been a star. Whether this makes you feel significant or insignificant depends entirely on you, and either answer is correct.",
-    ],
-  };
-
-  return (
-    samples[book.genre as keyof typeof samples] ??
-    samples["science"] ?? [
-      "The book you hold in your hands began as a different book entirely. Most books do. What you read is always a translation — from experience to thought, from thought to word, from word to the particular light you happen to be reading in.",
-      "Begin anywhere. The best books do not require a beginning. They require only your attention, which is the rarest thing you have to give.",
-    ]
-  );
-}
