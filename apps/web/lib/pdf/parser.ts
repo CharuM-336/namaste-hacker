@@ -12,7 +12,7 @@ interface PDFMetaInfo {
 if (typeof global !== "undefined" && typeof global.DOMMatrix === "undefined") {
   (global as any).DOMMatrix = class DOMMatrix {
     a = 1; b = 0; c = 0; d = 1; e = 0; f = 0;
-    constructor() {}
+    constructor() { }
   };
 }
 
@@ -152,14 +152,12 @@ export async function parsePDF(
   }
 
   const fullText = pageTexts.join("\n\n");
-  const firstPageText = pageTexts[0] ?? "";
 
   return {
     title,
     author,
     pages: numPages,
     fullText,
-    firstPageText,
     pageTexts,
   };
 }

@@ -5,8 +5,8 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 // Removed legacy book-store
-import type { Book, BookNote, BookWorld } from "@/src/types/book";
-import { adaptBookWorldToLegacyBook } from "@/lib/book-adapter";
+import type { BookNote, BookWorld } from "@/src/types/book";
+import { type Book, adaptBookWorldToLegacyBook } from "@/lib/book-adapter";
 
 export default function NotesPage() {
   const params = useParams();

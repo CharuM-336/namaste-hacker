@@ -1,6 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 
 import {
+  BOOK_DNA_PROMPT,
   COMPANION_PROMPT,
   EXPLAIN_PROMPT,
   METADATA_PROMPT,
@@ -9,6 +10,7 @@ import {
 } from "@/lib/ai/prompts";
 import {
   validateAsk,
+  validateBookDNA,
   validateCompanion,
   validateExplain,
   validateMetadata,
@@ -18,6 +20,7 @@ import { normaliseError } from "@/lib/utils/errors";
 import type {
   AskResult,
   BookCompanion,
+  BookDNA,
   BookMetadata,
   BookPalette,
   BookTheme,
@@ -115,6 +118,23 @@ export async function generateCompanion(
   try {
     const raw = await generateJSON(COMPANION_PROMPT(title, genre, mood));
     return { success: true, data: validateCompanion(raw) };
+  } catch (err) {
+    return { success: false, error: normaliseError(err) };
+  }
+}
+
+export async function generateBookDNA(
+  title: string,
+  author: string,
+  genre: string,
+  mood: string,
+  sampleText: string,
+): Promise<ServiceResult<BookDNA>> {
+  try {
+    const raw = await generateJSON(
+      BOOK_DNA_PROMPT(title, author, genre, mood, sampleText),
+    );
+    return { success: true, data: validateBookDNA(raw) };
   } catch (err) {
     return { success: false, error: normaliseError(err) };
   }

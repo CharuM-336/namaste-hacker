@@ -66,7 +66,7 @@ export async function processUpload(
       ),
     };
   }
-  
+
   // Verify it is actually a book/readable document
   if (!parsed.fullText || parsed.fullText.trim().length < 500) {
     return {
@@ -79,7 +79,7 @@ export async function processUpload(
   const metadataResult = await geminiGenerateMetadata(
     parsed.title,
     parsed.author,
-    parsed.firstPageText || parsed.fullText.slice(0, 2000),
+    parsed.pageTexts[0] || parsed.fullText.slice(0, 2000),
   );
 
   if (!metadataResult.success) {

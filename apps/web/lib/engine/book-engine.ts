@@ -1,4 +1,4 @@
-import { createEmbedding } from "@/lib/ai/gemini";
+import { createEmbedding, generateBookDNA } from "@/lib/ai/gemini";
 import {
   booksCollection,
   chunksCollection,
@@ -71,9 +71,10 @@ export async function generateBookWorld(
     await ensureCollections();
 
     const palette = paletteForGenre(metadata.genre);
+    const sampleText = parsed.pageTexts.slice(0, 5).join(" ");
 
-    // Theme + companion are generated in parallel — they're independent
-    const [themeResult, companionResult] = await Promise.all([
+    // Theme, companion, and DNA generated in parallel — all independent
+    const [themeResult, companionResult, dnaResult] = await Promise.all([
       themeService.generate(
         parsed.title,
         metadata.genre,
@@ -81,12 +82,23 @@ export async function generateBookWorld(
         palette,
       ),
       companionService.generate(parsed.title, metadata.genre, metadata.mood),
+      generateBookDNA(
+        parsed.title,
+        parsed.author,
+        metadata.genre,
+        metadata.mood,
+        sampleText,
+      ),
     ]);
 
     if (!themeResult.success)
       return { success: false, error: themeResult.error };
-    if (!companionResult.success) {
+    if (!companionResult.success)
       return { success: false, error: companionResult.error };
+    // DNA failure is non-fatal — we log and continue without it
+    const dna = dnaResult.success ? dnaResult.data : undefined;
+    if (!dnaResult.success) {
+      console.warn("[book-engine] BookDNA generation failed:", dnaResult.error);
     }
 
     const cover = generateSVGCover(parsed.title, parsed.author, palette);
@@ -102,6 +114,7 @@ export async function generateBookWorld(
       theme: themeResult.data,
       companion: companionResult.data,
       metadata,
+      ...(dna ? { dna } : {}),
       createdAt: new Date().toISOString(),
     };
 

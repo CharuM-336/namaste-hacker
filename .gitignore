@@ -13,6 +13,7 @@ dist/
 .env
 .env.*
 !.env.example
+.env.local
 
 # logs
 npm-debug.log*
@@ -23,3 +24,6 @@ pnpm-debug.log*
 # system
 .DS_Store
 Thumbs.db
+
+# graphify
+graphify-out/

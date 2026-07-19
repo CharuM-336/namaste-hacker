@@ -1,4 +1,4 @@
-// ─── Genre ───────────────────────────────────────────────────────────────────
+// --- Genre -------------------------------------------------------------------
 
 export type BookGenre =
   | "fantasy"
@@ -18,16 +18,34 @@ export type BookGenre =
 export type BookDifficulty = "light" | "moderate" | "dense";
 
 export type LayoutStyle =
-  "editorial" | "minimal" | "dramatic" | "archival" | "scientific";
+  | "dramatic"
+  | "archival"
+  | "editorial"
+  | "scientific"
+  | "philosophical"
+  | "minimal";
 
 export type MotionStyle = "fluid" | "sharp" | "gentle" | "cinematic";
 
+export type AnimationStyle =
+  | "particle"
+  | "fog"
+  | "geometric"
+  | "ink"
+  | "minimal"
+  | "cosmic";
+
 export type CompanionTone =
-  "warm" | "scholarly" | "poetic" | "analytical" | "philosophical" | "playful";
+  | "warm"
+  | "scholarly"
+  | "poetic"
+  | "analytical"
+  | "philosophical"
+  | "playful";
 
 export type NoteType = "quote" | "question" | "insight";
 
-// ─── Core models ─────────────────────────────────────────────────────────────
+// --- Core models -------------------------------------------------------------
 
 export interface BookPalette {
   primary: string;
@@ -68,6 +86,38 @@ export interface BookMetadata {
   estimatedReadingTime: number;
 }
 
+// --- BookDNA -----------------------------------------------------------------
+
+export interface BookCharacter {
+  name: string;
+  role: string;
+  importance: "protagonist" | "antagonist" | "supporting" | "mentor";
+  personality: string;
+  relationship: string;
+}
+
+export interface NarrativeSection {
+  heading: string;
+  body: string;
+}
+
+export interface BookDNA {
+  setting: string;
+  era: string;
+  atmosphere: string;
+  emotionalArc: string;
+  animationStyle: AnimationStyle;
+  decorativeElements: string[];
+  characters: BookCharacter[];
+  worldDescription: string;
+  heroQuote: string;
+  narrativeSections: NarrativeSection[];
+  iconography: string;
+  soundtrackMood: string;
+}
+
+// --- BookWorld ----------------------------------------------------------------
+
 export interface BookWorld {
   id: string;
   title: string;
@@ -78,6 +128,7 @@ export interface BookWorld {
   theme: BookTheme;
   companion: BookCompanion;
   metadata: BookMetadata;
+  dna?: BookDNA;
   createdAt: string;
 }
 
@@ -91,7 +142,7 @@ export interface BookNote {
   createdAt: string;
 }
 
-// ─── Vector chunk ─────────────────────────────────────────────────────────────
+// --- Vector chunk -------------------------------------------------------------
 
 export interface BookChunk {
   bookId: string;
@@ -100,7 +151,7 @@ export interface BookChunk {
   pageRef: number;
 }
 
-// ─── API response types ───────────────────────────────────────────────────────
+// --- API response types -------------------------------------------------------
 
 export interface UploadResult {
   bookId: string;
@@ -118,25 +169,16 @@ export interface AskResult {
   sources: string[];
 }
 
-export interface NotebookResult {
-  note: BookNote;
-}
+// ─── Error types ─────────────────────────────────────────────────────────────
 
-// ─── Parsed PDF ───────────────────────────────────────────────────────────────
-
-export interface ParsedPDF {
-  title: string;
-  author: string;
-  pages: number;
-  fullText: string;
-  firstPageText: string;
-  pageTexts: string[];
-}
-
-// ─── Service result wrapper ───────────────────────────────────────────────────
-
-export type ServiceResult<T> =
-  { success: true; data: T } | { success: false; error: AppError };
+export type ErrorCode =
+  | "INVALID_INPUT"
+  | "NOT_FOUND"
+  | "PDF_PARSE_FAILED"
+  | "AI_UNAVAILABLE"
+  | "DB_ERROR"
+  | "RATE_LIMITED"
+  | "INTERNAL_ERROR";
 
 export interface AppError {
   code: ErrorCode;
@@ -144,48 +186,16 @@ export interface AppError {
   status: number;
 }
 
-export type ErrorCode =
-  | "INVALID_INPUT"
-  | "PDF_PARSE_FAILED"
-  | "AI_UNAVAILABLE"
-  | "DB_ERROR"
-  | "NOT_FOUND"
-  | "RATE_LIMITED"
-  | "INTERNAL_ERROR";
+export type ServiceResult<T> =
+  | { success: true; data: T }
+  | { success: false; error: AppError };
 
-// ─── Legacy frontend types (kept for backwards compatibility) ─────────────────
+// --- Parsed PDF output --------------------------------------------------------
 
-/** @deprecated Use BookWorld from the backend. This stays for the client-side localStorage layer. */
-export interface BookLegacyPalette {
-  primary: string;
-  secondary: string;
-  accent: string;
-  paper: string;
-  ink: string;
-  mood: string;
-}
-
-/** @deprecated Use BookWorld from the backend. */
-export interface Book {
-  id: string;
+export interface ParsedPDF {
   title: string;
   author: string;
-  genre: BookGenre;
-  coverDataUrl?: string;
-  palette: BookLegacyPalette;
-  companionName: string;
-  stats: {
-    totalPages: number;
-    wordsEstimate: number;
-    minutesPerPage: number;
-    estimatedHours: number;
-    estimatedMinutes: number;
-    difficulty: BookDifficulty;
-  };
-  uploadedAt: string;
-  lastOpenedAt?: string;
-  readingProgress: number;
-  tagline: string;
-  pdfDataUrl?: string;
-  fileName: string;
+  pages: number;
+  pageTexts: string[];
+  fullText: string;
 }

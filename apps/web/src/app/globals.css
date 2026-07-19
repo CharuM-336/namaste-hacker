@@ -576,3 +576,90 @@ body::before {
 .delay-1400 {
   animation-delay: 1400ms;
 }
+
+/* ─── Folio Cinematic Animations ──────────────────────────────────────────── */
+
+/* Particle float — used in dramatic layout */
+@keyframes folio-particle-float {
+  0%   { transform: translateY(0px) translateX(0px); opacity: 0; }
+  15%  { opacity: 0.5; }
+  50%  { transform: translateY(-40px) translateX(15px); opacity: 0.3; }
+  85%  { opacity: 0.4; }
+  100% { transform: translateY(-80px) translateX(-10px); opacity: 0; }
+}
+
+.folio-particle {
+  animation: folio-particle-float linear infinite;
+}
+
+/* Fade in — general utility */
+@keyframes folio-fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.folio-fade-in {
+  animation: folio-fade-in 0.8s var(--ease-book) forwards;
+  opacity: 0;
+}
+
+/* Shimmer — loading bar */
+@keyframes folio-shimmer {
+  0%   { opacity: 0.3; transform: scaleX(0.6); }
+  50%  { opacity: 0.8; transform: scaleX(1); }
+  100% { opacity: 0.3; transform: scaleX(0.6); }
+}
+
+/* Ink reveal — archival layout */
+@keyframes folio-ink-reveal {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.folio-ink-reveal {
+  animation: folio-ink-reveal 0.6s var(--ease-book) forwards;
+}
+
+/* Scroll-triggered reveal — apply with JS Intersection Observer or CSS @scroll-timeline */
+@keyframes folio-scroll-reveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.folio-reveal {
+  opacity: 0;
+}
+
+.folio-reveal.is-visible {
+  animation: folio-scroll-reveal 0.9s var(--ease-book) forwards;
+}
+
+/* Typewriter cursor blink */
+@keyframes folio-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Fog drift — background texture animation */
+@keyframes folio-fog-drift {
+  0%   { transform: translateX(-5%) scale(1.05); opacity: 0.4; }
+  50%  { transform: translateX(5%) scale(1.08); opacity: 0.6; }
+  100% { transform: translateX(-5%) scale(1.05); opacity: 0.4; }
+}
+
+/* Grid pulse — scientific layout */
+@keyframes folio-grid-pulse {
+  0%, 100% { opacity: 0.04; }
+  50%       { opacity: 0.08; }
+}
+
+/* Companion bounce-in */
+@keyframes folio-companion-in {
+  0%   { opacity: 0; transform: translateY(16px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.folio-companion-in {
+  animation: folio-companion-in 0.5s var(--ease-book) forwards;
+}
+

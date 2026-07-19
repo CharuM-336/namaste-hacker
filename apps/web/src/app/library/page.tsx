@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 // Removed mock book-store
-import type { Book, BookWorld } from "@/src/types/book";
-import { adaptBookWorldToLegacyBook } from "@/lib/book-adapter";
+import type { BookWorld } from "@/src/types/book";
+import { type Book, adaptBookWorldToLegacyBook } from "@/lib/book-adapter";
 
 export default function LibraryPage() {
   const [books, setBooks] = useState<Book[]>([]);
