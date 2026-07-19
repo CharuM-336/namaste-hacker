@@ -1,7 +1,12 @@
 // src/components/book-experience/media/ImageBlock/ImageBlock.tsx
 import React, { forwardRef, memo } from "react";
 import { Box } from "@namaste-hacker/ui/design-system/primitives/Box";
-import { colors, spacing, radius, shadows } from "@namaste-hacker/ui/design-system/tokens";
+import {
+  colors,
+  spacing,
+  radius,
+  shadows,
+} from "@namaste-hacker/ui/design-system/tokens";
 import styles from "./ImageBlock.module.css";
 
 export interface ImageBlockProps {
@@ -58,7 +63,9 @@ const ImageBlock = forwardRef<HTMLDivElement, ImageBlockProps>(
           className={styles.image}
           loading={lazy ? "lazy" : "eager"}
         />
-        {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
+        {caption && (
+          <figcaption className={styles.caption}>{caption}</figcaption>
+        )}
       </Box>
     );
   },

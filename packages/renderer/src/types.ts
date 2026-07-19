@@ -123,10 +123,10 @@ export interface Animation {
 
 /** Union type for any node that can be rendered recursively */
 export type RenderNode =
-  | { nodeType: 'world'; data: World }
-  | { nodeType: 'scene'; data: Scene }
-  | { nodeType: 'zone'; data: Zone }
-  | { nodeType: 'module'; data: Module }
-  | { nodeType: 'component'; data: Component }
-  | { nodeType: 'interaction'; data: Interaction }
-  | { nodeType: 'animation'; data: Animation };
+  | { nodeType: "world"; data: World }
+  | { nodeType: "scene"; data: Scene }
+  | { nodeType: "zone"; data: Zone }
+  | { nodeType: "module"; data: Module }
+  | { nodeType: "component"; data: Component }
+  | { nodeType: "interaction"; data: Interaction }
+  | { nodeType: "animation"; data: Animation };

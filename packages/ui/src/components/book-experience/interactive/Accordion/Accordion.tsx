@@ -21,12 +21,20 @@ export interface AccordionProps {
 
 const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
   ({ items, className, style }, ref) => (
-    <Box ref={ref} className={classNames(styles.accordion, className)} style={style}>
+    <Box
+      ref={ref}
+      className={classNames(styles.accordion, className)}
+      style={style}
+    >
       {items.map((item, idx) => {
         const [expanded, setExpanded] = React.useState(!!item.defaultExpanded);
         return (
           <div key={idx} className={styles.item}>
-            <div className={styles.header} onClick={() => setExpanded(!expanded)} role="button">
+            <div
+              className={styles.header}
+              onClick={() => setExpanded(!expanded)}
+              role="button"
+            >
               {item.title}
             </div>
             {expanded && <div className={styles.content}>{item.content}</div>}
@@ -34,7 +42,7 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
         );
       })}
     </Box>
-  )
+  ),
 );
 
 export default memo(Accordion);

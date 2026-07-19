@@ -12,7 +12,9 @@ const ajv = new Ajv({ allErrors: true, strict: false });
 export function parseBlueprint(raw: unknown): Blueprint {
   const validate = ajv.compile(schema as unknown as JSONSchemaType<Blueprint>);
   if (!validate(raw)) {
-    const errors = (validate.errors || []).map(e => `${e.instancePath} ${e.message}`).join("; ");
+    const errors = (validate.errors || [])
+      .map((e) => `${e.instancePath} ${e.message}`)
+      .join("; ");
     throw new Error(`Invalid Blueprint: ${errors}`);
   }
   // Type assertion safe after validation

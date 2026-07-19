@@ -1,7 +1,13 @@
 // src/components/book-experience/CharacterRelationship/CharacterRelationship.tsx
 import React, { forwardRef, memo } from "react";
 import { Box } from "../../../design-system/primitives/Box";
-import { colors, spacing, radius, typography, shadows } from "../../../design-system/tokens";
+import {
+  colors,
+  spacing,
+  radius,
+  typography,
+  shadows,
+} from "../../../design-system/tokens";
 import styles from "./CharacterRelationship.module.css";
 
 export interface Relationship {
@@ -22,9 +28,20 @@ export interface CharacterRelationshipProps {
   style?: React.CSSProperties;
 }
 
-const CharacterRelationship = forwardRef<HTMLDivElement, CharacterRelationshipProps>(
+const CharacterRelationship = forwardRef<
+  HTMLDivElement,
+  CharacterRelationshipProps
+>(
   (
-    { relationships, charactersMap, variant = "default", loading = false, error = false, className, style },
+    {
+      relationships,
+      charactersMap,
+      variant = "default",
+      loading = false,
+      error = false,
+      className,
+      style,
+    },
     ref,
   ) => {
     if (loading) {
@@ -57,23 +74,37 @@ const CharacterRelationship = forwardRef<HTMLDivElement, CharacterRelationshipPr
             <div key={i} className={styles.relationship} role="listitem">
               <div className={styles.avatarWrapper}>
                 {source?.avatarUrl && (
-                  <img src={source.avatarUrl} alt={source.name} className={styles.avatar} />
+                  <img
+                    src={source.avatarUrl}
+                    alt={source.name}
+                    className={styles.avatar}
+                  />
                 )}
-                <span className={styles.name}>{source?.name ?? rel.source}</span>
+                <span className={styles.name}>
+                  {source?.name ?? rel.source}
+                </span>
               </div>
               <div className={styles.arrow} aria-hidden="true">
                 {rel.directional ? "→" : "—"}
               </div>
               <div className={styles.avatarWrapper}>
                 {target?.avatarUrl && (
-                  <img src={target.avatarUrl} alt={target.name} className={styles.avatar} />
+                  <img
+                    src={target.avatarUrl}
+                    alt={target.name}
+                    className={styles.avatar}
+                  />
                 )}
-                <span className={styles.name}>{target?.name ?? rel.target}</span>
+                <span className={styles.name}>
+                  {target?.name ?? rel.target}
+                </span>
               </div>
               <div className={styles.meta}>
                 <span className={styles.type}>{rel.type}</span>
                 {rel.strength !== undefined && (
-                  <span className={styles.strength}>Strength: {rel.strength}</span>
+                  <span className={styles.strength}>
+                    Strength: {rel.strength}
+                  </span>
                 )}
               </div>
             </div>

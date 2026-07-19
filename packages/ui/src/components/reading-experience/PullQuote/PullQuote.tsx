@@ -1,7 +1,12 @@
 // src/components/reading-experience/PullQuote/PullQuote.tsx
 import React, { forwardRef, memo } from "react";
 import { Box } from "../../../design-system/primitives/Box"; // Box primitive
-import { colors, spacing, radius, typography } from "../../../design-system/tokens";
+import {
+  colors,
+  spacing,
+  radius,
+  typography,
+} from "../../../design-system/tokens";
 import styles from "./PullQuote.module.css";
 
 export interface PullQuoteProps {
@@ -30,10 +35,12 @@ const PullQuote = forwardRef<HTMLDivElement, PullQuoteProps>(
         }}
       >
         <blockquote className={styles.text}>"{text}"</blockquote>
-        {attribution && <cite className={styles.attribution}>— {attribution}</cite>}
+        {attribution && (
+          <cite className={styles.attribution}>— {attribution}</cite>
+        )}
       </Box>
     );
-  }
+  },
 );
 
 export default memo(PullQuote);

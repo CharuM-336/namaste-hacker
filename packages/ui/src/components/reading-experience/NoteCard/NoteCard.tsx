@@ -1,7 +1,12 @@
 // src/components/reading-experience/NoteCard/NoteCard.tsx
 import React, { forwardRef, memo } from "react";
 import { Box } from "../../../design-system/primitives/Box";
-import { colors, spacing, radius, typography } from "../../../design-system/tokens";
+import {
+  colors,
+  spacing,
+  radius,
+  typography,
+} from "../../../design-system/tokens";
 import styles from "./NoteCard.module.css";
 
 export interface NoteCardProps {
@@ -16,8 +21,25 @@ export interface NoteCardProps {
 }
 
 const NoteCard = forwardRef<HTMLDivElement, NoteCardProps>(
-  ({ title, body, tags = [], category, importance = "low", pinned = false, className, style }, ref) => {
-    const importanceColor = importance === "high" ? colors.primary : importance === "medium" ? colors.textPrimary : colors.textSecondary;
+  (
+    {
+      title,
+      body,
+      tags = [],
+      category,
+      importance = "low",
+      pinned = false,
+      className,
+      style,
+    },
+    ref,
+  ) => {
+    const importanceColor =
+      importance === "high"
+        ? colors.primary
+        : importance === "medium"
+          ? colors.textPrimary
+          : colors.textSecondary;
     return (
       <Box
         ref={ref}
@@ -41,10 +63,12 @@ const NoteCard = forwardRef<HTMLDivElement, NoteCardProps>(
             ))}
           </ul>
         )}
-        {category && <div className={styles.category}>Category: {category}</div>}
+        {category && (
+          <div className={styles.category}>Category: {category}</div>
+        )}
       </Box>
     );
-  }
+  },
 );
 
 export default memo(NoteCard);

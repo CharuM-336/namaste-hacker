@@ -1,7 +1,12 @@
 // src/components/reading-experience/InsightCard/InsightCard.tsx
 import React, { forwardRef, memo } from "react";
 import { Box } from "../../../design-system/primitives/Box";
-import { colors, spacing, radius, typography } from "../../../design-system/tokens";
+import {
+  colors,
+  spacing,
+  radius,
+  typography,
+} from "../../../design-system/tokens";
 import styles from "./InsightCard.module.css";
 
 export interface InsightCardProps {
@@ -15,13 +20,24 @@ export interface InsightCardProps {
 }
 
 const InsightCard = forwardRef<HTMLDivElement, InsightCardProps>(
-  ({ title, insight, confidence, relatedConcepts = [], importance = "low", className, style }, ref) => {
+  (
+    {
+      title,
+      insight,
+      confidence,
+      relatedConcepts = [],
+      importance = "low",
+      className,
+      style,
+    },
+    ref,
+  ) => {
     const borderColor =
       importance === "high"
         ? colors.primary
         : importance === "medium"
-        ? colors.textPrimary
-        : colors.textSecondary;
+          ? colors.textPrimary
+          : colors.textSecondary;
     return (
       <Box
         ref={ref}
@@ -50,7 +66,7 @@ const InsightCard = forwardRef<HTMLDivElement, InsightCardProps>(
         )}
       </Box>
     );
-  }
+  },
 );
 
 export default memo(InsightCard);

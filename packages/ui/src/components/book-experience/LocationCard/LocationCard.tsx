@@ -1,7 +1,13 @@
 // src/components/book-experience/LocationCard/LocationCard.tsx
 import React, { forwardRef, memo } from "react";
 import { Box } from "../../../design-system/primitives/Box";
-import { colors, spacing, radius, typography, shadows } from "../../../design-system/tokens";
+import {
+  colors,
+  spacing,
+  radius,
+  typography,
+  shadows,
+} from "../../../design-system/tokens";
 import styles from "./LocationCard.module.css";
 
 export interface LocationCardProps {
@@ -56,7 +62,9 @@ const LocationCard = forwardRef<HTMLDivElement, LocationCardProps>(
         role="region"
         aria-label={`Location: ${title}`}
       >
-        {imageUrl && <img src={imageUrl} alt={title} className={styles.image} />}
+        {imageUrl && (
+          <img src={imageUrl} alt={title} className={styles.image} />
+        )}
         <h3 className={styles.title}>{title}</h3>
         {description && <p className={styles.description}>{description}</p>}
         {significance && <p className={styles.significance}>{significance}</p>}

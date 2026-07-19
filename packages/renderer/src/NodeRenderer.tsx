@@ -1,6 +1,13 @@
 // src/NodeRenderer.tsx
 import React, { memo } from "react";
-import type { RenderNode, World, Scene, Zone, Module, Component } from "./types";
+import type {
+  RenderNode,
+  World,
+  Scene,
+  Zone,
+  Module,
+  Component,
+} from "./types";
 import { useRenderContext } from "./RenderContext";
 import { defaultComponentFactory } from "./ComponentFactory";
 import { RenderErrorBoundary } from "./ErrorBoundary";
@@ -12,7 +19,7 @@ import { RenderErrorBoundary } from "./ErrorBoundary";
 export const NodeRenderer: React.FC<{ node: RenderNode }> = memo(({ node }) => {
   const ctx = useRenderContext();
   const renderChildren = (children: RenderNode[]) =>
-    children.map(child => <NodeRenderer key={child.data.id} node={child} />);
+    children.map((child) => <NodeRenderer key={child.data.id} node={child} />);
 
   switch (node.nodeType) {
     case "world": {
@@ -20,8 +27,11 @@ export const NodeRenderer: React.FC<{ node: RenderNode }> = memo(({ node }) => {
       return (
         <RenderErrorBoundary>
           <div data-node-type="world" data-id={world.id}>
-            {world.scenes?.map(scene => (
-              <NodeRenderer key={scene.id} node={{ nodeType: "scene", data: scene }} />
+            {world.scenes?.map((scene) => (
+              <NodeRenderer
+                key={scene.id}
+                node={{ nodeType: "scene", data: scene }}
+              />
             ))}
           </div>
         </RenderErrorBoundary>
@@ -33,12 +43,18 @@ export const NodeRenderer: React.FC<{ node: RenderNode }> = memo(({ node }) => {
         <RenderErrorBoundary>
           <section data-node-type="scene" data-id={scene.id}>
             {/* Render zones first (if any) */}
-            {scene.zones?.map(zone => (
-              <NodeRenderer key={zone.id} node={{ nodeType: "zone", data: zone }} />
+            {scene.zones?.map((zone) => (
+              <NodeRenderer
+                key={zone.id}
+                node={{ nodeType: "zone", data: zone }}
+              />
             ))}
             {/* Then render modules directly attached to the scene */}
-            {scene.modules?.map(mod => (
-              <NodeRenderer key={mod.id} node={{ nodeType: "module", data: mod }} />
+            {scene.modules?.map((mod) => (
+              <NodeRenderer
+                key={mod.id}
+                node={{ nodeType: "module", data: mod }}
+              />
             ))}
           </section>
         </RenderErrorBoundary>
@@ -49,8 +65,11 @@ export const NodeRenderer: React.FC<{ node: RenderNode }> = memo(({ node }) => {
       return (
         <RenderErrorBoundary>
           <div data-node-type="zone" data-id={zone.id}>
-            {zone.modules?.map(mod => (
-              <NodeRenderer key={mod.id} node={{ nodeType: "module", data: mod }} />
+            {zone.modules?.map((mod) => (
+              <NodeRenderer
+                key={mod.id}
+                node={{ nodeType: "module", data: mod }}
+              />
             ))}
           </div>
         </RenderErrorBoundary>
@@ -62,8 +81,11 @@ export const NodeRenderer: React.FC<{ node: RenderNode }> = memo(({ node }) => {
         <RenderErrorBoundary>
           <div data-node-type="module" data-id={mod.id}>
             {/* Render components inside the module */}
-            {mod.components?.map(comp => (
-              <NodeRenderer key={comp.id} node={{ nodeType: "component", data: comp }} />
+            {mod.components?.map((comp) => (
+              <NodeRenderer
+                key={comp.id}
+                node={{ nodeType: "component", data: comp }}
+              />
             ))}
           </div>
         </RenderErrorBoundary>
@@ -75,11 +97,18 @@ export const NodeRenderer: React.FC<{ node: RenderNode }> = memo(({ node }) => {
       const element = defaultComponentFactory(node, ctx);
       return (
         <RenderErrorBoundary>
-          <div data-node-type="component" data-id={comp.id} style={{ position: "relative" }}>
+          <div
+            data-node-type="component"
+            data-id={comp.id}
+            style={{ position: "relative" }}
+          >
             {element}
             {/* Render nested children if present */}
-            {comp.children?.map(child => (
-              <NodeRenderer key={child.id} node={{ nodeType: "component", data: child }} />
+            {comp.children?.map((child) => (
+              <NodeRenderer
+                key={child.id}
+                node={{ nodeType: "component", data: child }}
+              />
             ))}
           </div>
         </RenderErrorBoundary>

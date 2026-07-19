@@ -1,7 +1,12 @@
 // src/components/reading-experience/HighlightCard/HighlightCard.tsx
 import React, { forwardRef, memo } from "react";
 import { Box } from "@namaste-hacker/ui/design-system/primitives/Box";
-import { colors, spacing, radius, typography } from "@namaste-hacker/ui/design-system/tokens";
+import {
+  colors,
+  spacing,
+  radius,
+  typography,
+} from "@namaste-hacker/ui/design-system/tokens";
 import styles from "./HighlightCard.module.css";
 
 export interface HighlightCardProps {
@@ -15,15 +20,27 @@ export interface HighlightCardProps {
 }
 
 const HighlightCard = forwardRef<HTMLDivElement, HighlightCardProps>(
-  ({ excerpt, chapter, importance = "low", category, colorVariant = "default", className, style }, ref) => {
+  (
+    {
+      excerpt,
+      chapter,
+      importance = "low",
+      category,
+      colorVariant = "default",
+      className,
+      style,
+    },
+    ref,
+  ) => {
     const borderColor =
       importance === "high"
         ? colors.error
         : importance === "medium"
-        ? colors.warning
-        : colors.textSecondary;
+          ? colors.warning
+          : colors.textSecondary;
     const bgColor = colorVariant === "accent" ? colors.primary : colors.surface;
-    const textColor = colorVariant === "accent" ? colors.onPrimary : colors.textPrimary;
+    const textColor =
+      colorVariant === "accent" ? colors.onPrimary : colors.textPrimary;
     return (
       <Box
         ref={ref}
@@ -39,10 +56,12 @@ const HighlightCard = forwardRef<HTMLDivElement, HighlightCardProps>(
       >
         <p className={styles.excerpt}>"{excerpt}"</p>
         {chapter && <span className={styles.chapter}>Chapter {chapter}</span>}
-        {category && <span className={styles.category}>Category: {category}</span>}
+        {category && (
+          <span className={styles.category}>Category: {category}</span>
+        )}
       </Box>
     );
-  }
+  },
 );
 
 export default memo(HighlightCard);

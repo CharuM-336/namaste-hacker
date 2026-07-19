@@ -969,33 +969,33 @@ Readers can engage with difficult material with more agency and care.
 
 The table below summarizes how each Book DNA category contributes to the product.
 
-| Category | Why It Matters | Product Features | UX Improvement |
-|---|---|---|---|
-| Identity DNA | Grounds the work and edition | Library, citations, search, exports | Prevents confusion across editions |
-| Classification DNA | Selects the right experience pattern | Dynamic sites, recommendation, companion defaults | Makes each book feel appropriately designed |
-| Intent DNA | Captures the book's purpose | Goals, onboarding, completion rituals | Helps readers know what journey they are on |
-| Structural DNA | Reveals internal architecture | Adaptive TOC, progress, study paths | Navigation by meaning instead of page number |
-| Conceptual DNA | Extracts intellectual value | Concept maps, quizzes, study guides | Builds durable understanding |
-| Narrative DNA | Tracks story mechanics | Spoiler-safe recaps, timelines, plot maps | Preserves suspense while improving orientation |
-| Character And Entity DNA | Identifies important actors and objects | Character cards, glossaries, maps | Reduces memory load |
-| Relationship DNA | Shows how entities connect | Relationship graphs, conflict tracking | Makes complex social systems legible |
-| Temporal DNA | Separates narrative order and chronology | Timelines, historical overlays | Clarifies sequence and pacing |
-| Spatial DNA | Captures place and movement | Maps, setting cards, journeys | Helps readers visualize the world |
-| Thematic DNA | Extracts recurring meanings | Theme maps, reflection, discussion | Deepens interpretation |
-| Symbolic DNA | Tracks motifs and metaphors | Motif tracker, literary analysis | Reveals hidden patterning |
-| Emotional DNA | Models the felt experience | Mood-aware companion, session planning | Supports emotional pacing |
-| Stylistic DNA | Understands prose and voice | Vocabulary help, style-aware explanations | Matches support to the writing |
-| Complexity DNA | Predicts difficulty | Adaptive reading, interventions | Helps without overwhelming |
-| Pedagogical DNA | Turns reading into learning | Quizzes, flashcards, learning paths | Supports active mastery |
-| Philosophical DNA | Captures deep questions | Socratic companion, journaling | Encourages reflection and debate |
-| Contextual DNA | Places the book in history and culture | Context cards, reception history | Prevents shallow interpretation |
-| Evidence DNA | Evaluates support for claims | Claim tracing, citation explorer | Builds trust calibration |
-| Knowledge Graph DNA | Connects everything | Semantic search, concept maps | Makes the book explorable |
-| Curiosity DNA | Models attention and suspense | Teasers, nudges, previews | Keeps readers engaged responsibly |
-| Reflection DNA | Finds moments for integration | Notebook, journaling, book clubs | Turns reading into personal meaning |
-| Personalization DNA | Adapts to reader goals | Modes, pacing, companion behavior | Makes the book feel tailored |
-| Experience DNA | Converts intelligence into product shape | Dynamic websites, navigation, modules | Makes each book unique |
-| Safety DNA | Handles sensitive content responsibly | Warnings, controls, careful companion behavior | Gives readers agency and care |
+| Category                 | Why It Matters                           | Product Features                                  | UX Improvement                                 |
+| ------------------------ | ---------------------------------------- | ------------------------------------------------- | ---------------------------------------------- |
+| Identity DNA             | Grounds the work and edition             | Library, citations, search, exports               | Prevents confusion across editions             |
+| Classification DNA       | Selects the right experience pattern     | Dynamic sites, recommendation, companion defaults | Makes each book feel appropriately designed    |
+| Intent DNA               | Captures the book's purpose              | Goals, onboarding, completion rituals             | Helps readers know what journey they are on    |
+| Structural DNA           | Reveals internal architecture            | Adaptive TOC, progress, study paths               | Navigation by meaning instead of page number   |
+| Conceptual DNA           | Extracts intellectual value              | Concept maps, quizzes, study guides               | Builds durable understanding                   |
+| Narrative DNA            | Tracks story mechanics                   | Spoiler-safe recaps, timelines, plot maps         | Preserves suspense while improving orientation |
+| Character And Entity DNA | Identifies important actors and objects  | Character cards, glossaries, maps                 | Reduces memory load                            |
+| Relationship DNA         | Shows how entities connect               | Relationship graphs, conflict tracking            | Makes complex social systems legible           |
+| Temporal DNA             | Separates narrative order and chronology | Timelines, historical overlays                    | Clarifies sequence and pacing                  |
+| Spatial DNA              | Captures place and movement              | Maps, setting cards, journeys                     | Helps readers visualize the world              |
+| Thematic DNA             | Extracts recurring meanings              | Theme maps, reflection, discussion                | Deepens interpretation                         |
+| Symbolic DNA             | Tracks motifs and metaphors              | Motif tracker, literary analysis                  | Reveals hidden patterning                      |
+| Emotional DNA            | Models the felt experience               | Mood-aware companion, session planning            | Supports emotional pacing                      |
+| Stylistic DNA            | Understands prose and voice              | Vocabulary help, style-aware explanations         | Matches support to the writing                 |
+| Complexity DNA           | Predicts difficulty                      | Adaptive reading, interventions                   | Helps without overwhelming                     |
+| Pedagogical DNA          | Turns reading into learning              | Quizzes, flashcards, learning paths               | Supports active mastery                        |
+| Philosophical DNA        | Captures deep questions                  | Socratic companion, journaling                    | Encourages reflection and debate               |
+| Contextual DNA           | Places the book in history and culture   | Context cards, reception history                  | Prevents shallow interpretation                |
+| Evidence DNA             | Evaluates support for claims             | Claim tracing, citation explorer                  | Builds trust calibration                       |
+| Knowledge Graph DNA      | Connects everything                      | Semantic search, concept maps                     | Makes the book explorable                      |
+| Curiosity DNA            | Models attention and suspense            | Teasers, nudges, previews                         | Keeps readers engaged responsibly              |
+| Reflection DNA           | Finds moments for integration            | Notebook, journaling, book clubs                  | Turns reading into personal meaning            |
+| Personalization DNA      | Adapts to reader goals                   | Modes, pacing, companion behavior                 | Makes the book feel tailored                   |
+| Experience DNA           | Converts intelligence into product shape | Dynamic websites, navigation, modules             | Makes each book unique                         |
+| Safety DNA               | Handles sensitive content responsibly    | Warnings, controls, careful companion behavior    | Gives readers agency and care                  |
 
 ## Part 4: Structured JSON Schema
 
@@ -1040,11 +1040,27 @@ The following schema is a product-level contract for Book DNA. It defines the sh
     "subgenres": ["string"],
     "fictionality": "fiction | nonfiction | hybrid | unknown",
     "format_type": "novel | essay_collection | textbook | memoir | manual | poetry | short_stories | other",
-    "content_mode": ["narrative", "argumentative", "instructional", "reference", "reflective", "experimental"],
+    "content_mode": [
+      "narrative",
+      "argumentative",
+      "instructional",
+      "reference",
+      "reflective",
+      "experimental"
+    ],
     "domain": ["string"],
     "discipline": ["string"],
     "comparative_shelf": ["string"],
-    "experience_archetype": ["mystery", "world", "course", "argument", "practice", "archive", "journey", "conversation"]
+    "experience_archetype": [
+      "mystery",
+      "world",
+      "course",
+      "argument",
+      "practice",
+      "archive",
+      "journey",
+      "conversation"
+    ]
   },
   "intent": {
     "author_intent": "string",
@@ -1387,14 +1403,29 @@ The following schema is a product-level contract for Book DNA. It defines the sh
     "pause_points": ["section_id"]
   },
   "personalization": {
-    "reader_segments": ["beginner", "student", "expert", "casual", "book_club", "creator", "researcher"],
+    "reader_segments": [
+      "beginner",
+      "student",
+      "expert",
+      "casual",
+      "book_club",
+      "creator",
+      "researcher"
+    ],
     "recommended_modes": ["read", "study", "explore", "reflect", "practice"],
     "pace_options": ["slow", "standard", "accelerated"],
     "depth_options": ["light", "standard", "deep"],
     "spoiler_sensitivity": "low | medium | high",
     "prior_knowledge_paths": ["string"],
     "emotional_safety_notes": ["string"],
-    "companion_modes": ["guide", "coach", "scholar", "detective", "historian", "Socratic"]
+    "companion_modes": [
+      "guide",
+      "coach",
+      "scholar",
+      "detective",
+      "historian",
+      "Socratic"
+    ]
   },
   "experience": {
     "recommended_site_structure": ["string"],
@@ -1402,7 +1433,15 @@ The following schema is a product-level contract for Book DNA. It defines the sh
     "interaction_language": ["string"],
     "primary_modules": ["string"],
     "secondary_modules": ["string"],
-    "visualization_opportunities": ["timeline", "map", "relationship_graph", "concept_graph", "motif_tracker", "journey", "claim_tree"],
+    "visualization_opportunities": [
+      "timeline",
+      "map",
+      "relationship_graph",
+      "concept_graph",
+      "motif_tracker",
+      "journey",
+      "claim_tree"
+    ],
     "companion_personality": "string",
     "annotation_strategy": "string",
     "book_theme_overrides": {

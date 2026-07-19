@@ -1,6 +1,13 @@
 // src/ComponentFactory.tsx
 import React, { lazy, Suspense } from "react";
-import type { RenderNode, Component, Module, Scene, Zone, World } from "./types";
+import type {
+  RenderNode,
+  Component,
+  Module,
+  Scene,
+  Zone,
+  World,
+} from "./types";
 import { RenderErrorBoundary } from "./ErrorBoundary";
 import { LoadingSpinner } from "./components/LoadingSpinner";
 import type { RenderContext } from "./Registry";
@@ -9,7 +16,10 @@ import type { RenderContext } from "./Registry";
  * Resolve a component kind to a lazily loaded React component.
  * The map can be extended via registry registration.
  */
-const lazyComponentMap: Record<string, () => Promise<{ default: React.ComponentType<any> }>> = {
+const lazyComponentMap: Record<
+  string,
+  () => Promise<{ default: React.ComponentType<any> }>
+> = {
   HeroBanner: () => import("./builtins/HeroBanner"),
   Timeline: () => import("./builtins/Timeline"),
   unknown: () => Promise.resolve({ default: () => null }),
@@ -19,7 +29,10 @@ const lazyComponentMap: Record<string, () => Promise<{ default: React.ComponentT
  * Factory that creates a React element for a RenderNode.
  * It handles lazy loading and wraps the result in an error boundary.
  */
-export const defaultComponentFactory = (node: RenderNode, ctx: RenderContext): React.ReactNode => {
+export const defaultComponentFactory = (
+  node: RenderNode,
+  ctx: RenderContext,
+): React.ReactNode => {
   const { registry } = ctx;
   const typeKey = (() => {
     switch (node.nodeType) {

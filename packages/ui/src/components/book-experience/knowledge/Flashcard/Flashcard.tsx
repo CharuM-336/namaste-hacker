@@ -1,5 +1,5 @@
-import React, { forwardRef, memo } from 'react';
-import { Box } from '../../../../design-system/primitives/Box';
+import React, { forwardRef, memo } from "react";
+import { Box } from "../../../../design-system/primitives/Box";
 
 export interface FlashcardProps {
   [key: string]: any;

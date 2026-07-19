@@ -1,7 +1,13 @@
 // src/components/book-experience/Glossary/Glossary.tsx
 import React, { forwardRef, memo, useState } from "react";
 import { Box } from "../../../design-system/primitives/Box";
-import { colors, spacing, radius, typography, shadows } from "../../../design-system/tokens";
+import {
+  colors,
+  spacing,
+  radius,
+  typography,
+  shadows,
+} from "../../../design-system/tokens";
 import styles from "./Glossary.module.css";
 
 export interface GlossaryTerm {
@@ -22,13 +28,24 @@ export interface GlossaryProps {
 
 const Glossary = forwardRef<HTMLDivElement, GlossaryProps>(
   (
-    { terms, searchable = false, variant = "default", loading = false, error = false, className, style },
+    {
+      terms,
+      searchable = false,
+      variant = "default",
+      loading = false,
+      error = false,
+      className,
+      style,
+    },
     ref,
   ) => {
     const [filter, setFilter] = useState("");
-    const visibleTerms = searchable && filter
-      ? terms.filter((t) => t.term.toLowerCase().includes(filter.toLowerCase()))
-      : terms;
+    const visibleTerms =
+      searchable && filter
+        ? terms.filter((t) =>
+            t.term.toLowerCase().includes(filter.toLowerCase()),
+          )
+        : terms;
     if (loading) {
       return <div className={styles.loading}>Loading…</div>;
     }

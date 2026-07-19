@@ -24,12 +24,18 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(
   ({ tabs, defaultIndex = 0, className, style }, ref) => {
     const [active, setActive] = React.useState(defaultIndex);
     return (
-      <Box ref={ref} className={classNames(styles.tabs, className)} style={style}>
+      <Box
+        ref={ref}
+        className={classNames(styles.tabs, className)}
+        style={style}
+      >
         <div className={styles.tabList} role="tablist">
           {tabs.map((tab, i) => (
             <button
               key={i}
-              className={classNames(styles.tab, { [styles.active]: i === active })}
+              className={classNames(styles.tab, {
+                [styles.active]: i === active,
+              })}
               role="tab"
               aria-selected={i === active}
               onClick={() => setActive(i)}
@@ -43,7 +49,7 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(
         </div>
       </Box>
     );
-  }
+  },
 );
 
 export default memo(Tabs);

@@ -24,7 +24,7 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
         {children}
       </div>
     );
-  }
+  },
 );
 
 export default Box;

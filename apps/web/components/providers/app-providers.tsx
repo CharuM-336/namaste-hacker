@@ -8,7 +8,7 @@ export function AppProviders({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ThemeProvider>
+    <ThemeProvider defaultTheme="light" enableSystem={false}>
       <TooltipProvider delayDuration={200}>{children}</TooltipProvider>
       <Toaster />
     </ThemeProvider>

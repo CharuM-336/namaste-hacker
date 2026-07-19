@@ -1,7 +1,13 @@
 // src/components/book-experience/CharacterCard/CharacterCard.tsx
 import React, { forwardRef, memo } from "react";
 import { Box } from "../../../design-system/primitives/Box";
-import { colors, spacing, radius, typography, shadows } from "../../../design-system/tokens";
+import {
+  colors,
+  spacing,
+  radius,
+  typography,
+  shadows,
+} from "../../../design-system/tokens";
 import styles from "./CharacterCard.module.css";
 
 export interface CharacterCardProps {
@@ -60,7 +66,11 @@ const CharacterCard = forwardRef<HTMLDivElement, CharacterCardProps>(
         aria-label={`Character Card: ${name}`}
       >
         {avatarUrl && (
-          <img src={avatarUrl} alt={`Avatar of ${name}`} className={styles.avatar} />
+          <img
+            src={avatarUrl}
+            alt={`Avatar of ${name}`}
+            className={styles.avatar}
+          />
         )}
         <h3 className={styles.name}>{name}</h3>
         {role && <p className={styles.role}>{role}</p>}

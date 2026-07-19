@@ -19,16 +19,24 @@ const ExpandableSection = forwardRef<HTMLDivElement, ExpandableSectionProps>(
   ({ children, title, defaultExpanded = false, className, style }, ref) => {
     const [expanded, setExpanded] = React.useState(defaultExpanded);
     return (
-      <Box ref={ref} className={classNames(styles.expandableSection, className)} style={style}>
+      <Box
+        ref={ref}
+        className={classNames(styles.expandableSection, className)}
+        style={style}
+      >
         {title && (
-          <div className={styles.header} onClick={() => setExpanded(!expanded)} role="button">
+          <div
+            className={styles.header}
+            onClick={() => setExpanded(!expanded)}
+            role="button"
+          >
             {title}
           </div>
         )}
         {expanded && <div className={styles.content}>{children}</div>}
       </Box>
     );
-  }
+  },
 );
 
 export default memo(ExpandableSection);
