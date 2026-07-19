@@ -11,17 +11,19 @@ export interface DividerProps {
   style?: React.CSSProperties;
 }
 
-const Divider = forwardRef<HTMLDivElement, DividerProps>(({ className, style }, ref) => {
-  return (
-    <Box
-      ref={ref}
-      className={classNames(styles.divider, className)}
-      style={style}
-      role="separator"
-    >
-      <hr className={styles.hr} />
-    </Box>
-  );
-});
+const Divider = forwardRef<HTMLDivElement, DividerProps>(
+  ({ className, style }, ref) => {
+    return (
+      <Box
+        ref={ref}
+        className={classNames(styles.divider, className)}
+        style={style}
+        role="separator"
+      >
+        <hr className={styles.hr} />
+      </Box>
+    );
+  },
+);
 
 export default memo(Divider);

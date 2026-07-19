@@ -14,7 +14,10 @@ export interface ProgressIndicatorProps {
 
 const ProgressIndicator = forwardRef<HTMLDivElement, ProgressIndicatorProps>(
   ({ totalSteps, currentStep, variant = "default", className, style }, ref) => {
-    const percent = Math.min(100, Math.max(0, (currentStep / totalSteps) * 100));
+    const percent = Math.min(
+      100,
+      Math.max(0, (currentStep / totalSteps) * 100),
+    );
     return (
       <Box
         ref={ref}
@@ -33,10 +36,12 @@ const ProgressIndicator = forwardRef<HTMLDivElement, ProgressIndicatorProps>(
         <div className={styles.track}>
           <div className={styles.filler} style={{ width: `${percent}%` }} />
         </div>
-        <div className={styles.label}>Step {currentStep} of {totalSteps}</div>
+        <div className={styles.label}>
+          Step {currentStep} of {totalSteps}
+        </div>
       </Box>
     );
-  }
+  },
 );
 
 export default memo(ProgressIndicator);

@@ -1,7 +1,12 @@
 // src/components/book-experience/media/ComparisonSlider/ComparisonSlider.tsx
 import React, { forwardRef, memo } from "react";
 import { Box } from "@namaste-hacker/ui/design-system/primitives/Box";
-import { colors, spacing, radius, shadows } from "@namaste-hacker/ui/design-system/tokens";
+import {
+  colors,
+  spacing,
+  radius,
+  shadows,
+} from "@namaste-hacker/ui/design-system/tokens";
 import styles from "./ComparisonSlider.module.css";
 
 export interface ComparisonImage {
@@ -36,7 +41,8 @@ const ComparisonSlider = forwardRef<HTMLDivElement, ComparisonSliderProps>(
     ref,
   ) => {
     if (loading) return <div className={styles.loading}>Loading…</div>;
-    if (error) return <div className={styles.error}>Failed to load comparison.</div>;
+    if (error)
+      return <div className={styles.error}>Failed to load comparison.</div>;
     // Simple static layout – interactive handle is a future extension
     return (
       <Box
@@ -53,8 +59,18 @@ const ComparisonSlider = forwardRef<HTMLDivElement, ComparisonSliderProps>(
         role="group"
         aria-label="Before/After comparison"
       >
-        <img src={before.src} alt={before.alt} className={styles.before} loading="lazy" />
-        <img src={after.src} alt={after.alt} className={styles.after} loading="lazy" />
+        <img
+          src={before.src}
+          alt={before.alt}
+          className={styles.before}
+          loading="lazy"
+        />
+        <img
+          src={after.src}
+          alt={after.alt}
+          className={styles.after}
+          loading="lazy"
+        />
         {/* Placeholder for draggable handle – future interactive implementation */}
         <div className={styles.handle} />
       </Box>

@@ -44,7 +44,7 @@ const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(
         </nav>
       </Box>
     );
-  }
+  },
 );
 
 export default memo(Breadcrumb);

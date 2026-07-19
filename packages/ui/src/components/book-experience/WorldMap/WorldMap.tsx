@@ -1,7 +1,13 @@
 // src/components/book-experience/WorldMap/WorldMap.tsx
 import React, { forwardRef, memo } from "react";
 import { Box } from "../../../design-system/primitives/Box";
-import { colors, spacing, radius, typography, shadows } from "../../../design-system/tokens";
+import {
+  colors,
+  spacing,
+  radius,
+  typography,
+  shadows,
+} from "../../../design-system/tokens";
 import styles from "./WorldMap.module.css";
 
 export interface Location {
@@ -25,7 +31,14 @@ export interface WorldMapProps {
 
 const WorldMap = forwardRef<HTMLDivElement, WorldMapProps>(
   (
-    { locations, variant = "default", loading = false, error = false, className, style },
+    {
+      locations,
+      variant = "default",
+      loading = false,
+      error = false,
+      className,
+      style,
+    },
     ref,
   ) => {
     if (loading) {

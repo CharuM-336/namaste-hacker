@@ -10,7 +10,10 @@ import type { Blueprint } from "./types";
 /**
  * Render a Website Blueprint JSON into a React element tree.
  */
-export function render(blueprintJson: unknown, options?: { debug?: boolean }): React.ReactElement {
+export function render(
+  blueprintJson: unknown,
+  options?: { debug?: boolean },
+): React.ReactElement {
   const blueprint: Blueprint = parseBlueprint(blueprintJson);
   return (
     <RenderProvider registry={defaultRegistry} options={options}>

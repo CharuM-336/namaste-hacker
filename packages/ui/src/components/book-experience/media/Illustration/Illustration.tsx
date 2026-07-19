@@ -1,7 +1,12 @@
 // src/components/book-experience/media/Illustration/Illustration.tsx
 import React, { forwardRef, memo } from "react";
 import { Box } from "@namaste-hacker/ui/design-system/primitives/Box";
-import { colors, spacing, radius, shadows } from "@namaste-hacker/ui/design-system/tokens";
+import {
+  colors,
+  spacing,
+  radius,
+  shadows,
+} from "@namaste-hacker/ui/design-system/tokens";
 import styles from "./Illustration.module.css";
 
 export interface IllustrationProps {
@@ -32,7 +37,8 @@ const Illustration = forwardRef<HTMLDivElement, IllustrationProps>(
     ref,
   ) => {
     if (loading) return <div className={styles.loading}>Loading…</div>;
-    if (error) return <div className={styles.error}>Failed to load illustration.</div>;
+    if (error)
+      return <div className={styles.error}>Failed to load illustration.</div>;
     return (
       <Box
         ref={ref}
@@ -48,7 +54,9 @@ const Illustration = forwardRef<HTMLDivElement, IllustrationProps>(
         aria-label={alt}
       >
         <div className={responsive ? styles.responsive : undefined}>{svg}</div>
-        {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
+        {caption && (
+          <figcaption className={styles.caption}>{caption}</figcaption>
+        )}
       </Box>
     );
   },

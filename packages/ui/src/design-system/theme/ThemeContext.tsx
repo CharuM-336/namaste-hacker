@@ -10,9 +10,12 @@ export interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
-export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [mode, setMode] = useState<ThemeMode>("light");
-  const toggleMode = () => setMode((prev) => (prev === "light" ? "dark" : "light"));
+  const toggleMode = () =>
+    setMode((prev) => (prev === "light" ? "dark" : "light"));
 
   // Apply data attribute for CSS selectors
   React.useEffect(() => {

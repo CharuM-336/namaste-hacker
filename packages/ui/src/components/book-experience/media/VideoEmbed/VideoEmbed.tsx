@@ -30,7 +30,7 @@ const VideoEmbed = forwardRef<HTMLDivElement, VideoEmbedProps>(
         sandbox="allow-scripts allow-same-origin allow-presentation"
       />
     </Box>
-  )
+  ),
 );
 
 export default memo(VideoEmbed);

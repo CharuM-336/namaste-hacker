@@ -1,7 +1,13 @@
 // src/components/book-experience/Timeline/Timeline.tsx
 import React, { forwardRef, memo } from "react";
 import { Box } from "../../../design-system/primitives/Box";
-import { colors, spacing, radius, typography, shadows } from "../../../design-system/tokens";
+import {
+  colors,
+  spacing,
+  radius,
+  typography,
+  shadows,
+} from "../../../design-system/tokens";
 import styles from "./Timeline.module.css";
 
 export interface TimelineEvent {
@@ -21,7 +27,10 @@ export interface TimelineProps {
 }
 
 const Timeline = forwardRef<HTMLDivElement, TimelineProps>(
-  ({ events, variant = "vertical", collapsible = false, className, style }, ref) => {
+  (
+    { events, variant = "vertical", collapsible = false, className, style },
+    ref,
+  ) => {
     if (!events || events.length === 0) {
       return null;
     }
@@ -42,14 +51,20 @@ const Timeline = forwardRef<HTMLDivElement, TimelineProps>(
             {e.icon && <div className={styles.icon}>{e.icon}</div>}
             <div className={styles.content}>
               <h4 className={styles.title}>{e.title}</h4>
-              {e.timestamp && <time className={styles.time}>{new Date(e.timestamp).toLocaleString()}</time>}
-              {e.description && <p className={styles.description}>{e.description}</p>}
+              {e.timestamp && (
+                <time className={styles.time}>
+                  {new Date(e.timestamp).toLocaleString()}
+                </time>
+              )}
+              {e.description && (
+                <p className={styles.description}>{e.description}</p>
+              )}
             </div>
           </div>
         ))}
       </Box>
     );
-  }
+  },
 );
 
 export default memo(Timeline);

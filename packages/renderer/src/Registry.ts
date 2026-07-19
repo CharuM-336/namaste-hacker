@@ -5,7 +5,10 @@ import React from "react";
 /**
  * Factory function that, given a RenderNode and context, returns a React element.
  */
-export type ComponentFactory = (node: RenderNode, ctx: RenderContext) => React.ReactNode;
+export type ComponentFactory = (
+  node: RenderNode,
+  ctx: RenderContext,
+) => React.ReactNode;
 
 export interface RenderContext {
   registry: ComponentRegistry;
@@ -78,42 +81,102 @@ defaultRegistry.register("unknown", (node, _ctx) => {
   return React.createElement(PlaceholderComponent, { node });
 });
 
-defaultRegistry.register("arrival-hero", (node, _ctx) => React.createElement(ArrivalHero, node.data as any));
-defaultRegistry.register("chapter-card", (node, _ctx) => React.createElement(ChapterCard, node.data as any));
-defaultRegistry.register("section-heading", (node, _ctx) => React.createElement(SectionHeading, node.data as any));
-defaultRegistry.register("text-block", (node, _ctx) => React.createElement(TextBlock, node.data as any));
-defaultRegistry.register("divider", (node, _ctx) => React.createElement(Divider, node.data as any));
+defaultRegistry.register("arrival-hero", (node, _ctx) =>
+  React.createElement(ArrivalHero, node.data as any),
+);
+defaultRegistry.register("chapter-card", (node, _ctx) =>
+  React.createElement(ChapterCard, node.data as any),
+);
+defaultRegistry.register("section-heading", (node, _ctx) =>
+  React.createElement(SectionHeading, node.data as any),
+);
+defaultRegistry.register("text-block", (node, _ctx) =>
+  React.createElement(TextBlock, node.data as any),
+);
+defaultRegistry.register("divider", (node, _ctx) =>
+  React.createElement(Divider, node.data as any),
+);
 
 // Media component registrations
-defaultRegistry.register("image-block", (node, _ctx) => React.createElement(ImageBlock, node.data as any));
-defaultRegistry.register("image-gallery", (node, _ctx) => React.createElement(ImageGallery, node.data as any));
-defaultRegistry.register("illustration", (node, _ctx) => React.createElement(Illustration, node.data as any));
-defaultRegistry.register("comparison-slider", (node, _ctx) => React.createElement(ComparisonSlider, node.data as any));
-defaultRegistry.register("video-embed", (node, _ctx) => React.createElement(VideoEmbed, node.data as any));
+defaultRegistry.register("image-block", (node, _ctx) =>
+  React.createElement(ImageBlock, node.data as any),
+);
+defaultRegistry.register("image-gallery", (node, _ctx) =>
+  React.createElement(ImageGallery, node.data as any),
+);
+defaultRegistry.register("illustration", (node, _ctx) =>
+  React.createElement(Illustration, node.data as any),
+);
+defaultRegistry.register("comparison-slider", (node, _ctx) =>
+  React.createElement(ComparisonSlider, node.data as any),
+);
+defaultRegistry.register("video-embed", (node, _ctx) =>
+  React.createElement(VideoEmbed, node.data as any),
+);
 
 // Knowledge component registrations
-defaultRegistry.register("key-takeaways", (node, _ctx) => React.createElement(KeyTakeaways, node.data as any));
-defaultRegistry.register("mindmap-preview", (node, _ctx) => React.createElement(MindMapPreview, node.data as any));
-defaultRegistry.register("concept-graph", (node, _ctx) => React.createElement(ConceptGraph, node.data as any));
-defaultRegistry.register("flashcard", (node, _ctx) => React.createElement(Flashcard, node.data as any));
-defaultRegistry.register("quiz-preview", (node, _ctx) => React.createElement(QuizPreview, node.data as any));
+defaultRegistry.register("key-takeaways", (node, _ctx) =>
+  React.createElement(KeyTakeaways, node.data as any),
+);
+defaultRegistry.register("mindmap-preview", (node, _ctx) =>
+  React.createElement(MindMapPreview, node.data as any),
+);
+defaultRegistry.register("concept-graph", (node, _ctx) =>
+  React.createElement(ConceptGraph, node.data as any),
+);
+defaultRegistry.register("flashcard", (node, _ctx) =>
+  React.createElement(Flashcard, node.data as any),
+);
+defaultRegistry.register("quiz-preview", (node, _ctx) =>
+  React.createElement(QuizPreview, node.data as any),
+);
 // Navigation component registrations
-defaultRegistry.register("chapter-navigator", (node, _ctx) => React.createElement(ChapterNavigator, node.data as any));
-defaultRegistry.register("progress-indicator", (node, _ctx) => React.createElement(ProgressIndicator, node.data as any));
-defaultRegistry.register("reading-path", (node, _ctx) => React.createElement(ReadingPath, node.data as any));
-defaultRegistry.register("breadcrumb", (node, _ctx) => React.createElement(Breadcrumb, node.data as any));
+defaultRegistry.register("chapter-navigator", (node, _ctx) =>
+  React.createElement(ChapterNavigator, node.data as any),
+);
+defaultRegistry.register("progress-indicator", (node, _ctx) =>
+  React.createElement(ProgressIndicator, node.data as any),
+);
+defaultRegistry.register("reading-path", (node, _ctx) =>
+  React.createElement(ReadingPath, node.data as any),
+);
+defaultRegistry.register("breadcrumb", (node, _ctx) =>
+  React.createElement(Breadcrumb, node.data as any),
+);
 
 // Interaction component registrations
-defaultRegistry.register("expandable-section", (node, _ctx) => React.createElement(ExpandableSection, node.data as any));
-defaultRegistry.register("accordion", (node, _ctx) => React.createElement(Accordion, node.data as any));
-defaultRegistry.register("tabs", (node, _ctx) => React.createElement(Tabs, node.data as any));
-defaultRegistry.register("tooltip", (node, _ctx) => React.createElement(Tooltip, node.data as any));
-defaultRegistry.register("info-popover", (node, _ctx) => React.createElement(InfoPopover, node.data as any));
-defaultRegistry.register("hover-card", (node, _ctx) => React.createElement(HoverCard, node.data as any));
+defaultRegistry.register("expandable-section", (node, _ctx) =>
+  React.createElement(ExpandableSection, node.data as any),
+);
+defaultRegistry.register("accordion", (node, _ctx) =>
+  React.createElement(Accordion, node.data as any),
+);
+defaultRegistry.register("tabs", (node, _ctx) =>
+  React.createElement(Tabs, node.data as any),
+);
+defaultRegistry.register("tooltip", (node, _ctx) =>
+  React.createElement(Tooltip, node.data as any),
+);
+defaultRegistry.register("info-popover", (node, _ctx) =>
+  React.createElement(InfoPopover, node.data as any),
+);
+defaultRegistry.register("hover-card", (node, _ctx) =>
+  React.createElement(HoverCard, node.data as any),
+);
 
 // Utility component registrations
-defaultRegistry.register("badge", (node, _ctx) => React.createElement(Badge, node.data as any));
-defaultRegistry.register("chip", (node, _ctx) => React.createElement(Chip, node.data as any));
-defaultRegistry.register("tag", (node, _ctx) => React.createElement(Tag, node.data as any));
-defaultRegistry.register("statistic", (node, _ctx) => React.createElement(Statistic, node.data as any));
-defaultRegistry.register("icon-label", (node, _ctx) => React.createElement(IconLabel, node.data as any));
+defaultRegistry.register("badge", (node, _ctx) =>
+  React.createElement(Badge, node.data as any),
+);
+defaultRegistry.register("chip", (node, _ctx) =>
+  React.createElement(Chip, node.data as any),
+);
+defaultRegistry.register("tag", (node, _ctx) =>
+  React.createElement(Tag, node.data as any),
+);
+defaultRegistry.register("statistic", (node, _ctx) =>
+  React.createElement(Statistic, node.data as any),
+);
+defaultRegistry.register("icon-label", (node, _ctx) =>
+  React.createElement(IconLabel, node.data as any),
+);

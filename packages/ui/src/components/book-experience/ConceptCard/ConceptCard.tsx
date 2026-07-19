@@ -1,7 +1,13 @@
 // src/components/book-experience/ConceptCard/ConceptCard.tsx
 import React, { forwardRef, memo } from "react";
 import { Box } from "../../../design-system/primitives/Box";
-import { colors, spacing, radius, typography, shadows } from "../../../design-system/tokens";
+import {
+  colors,
+  spacing,
+  radius,
+  typography,
+  shadows,
+} from "../../../design-system/tokens";
 import styles from "./ConceptCard.module.css";
 
 export interface ConceptCardProps {
@@ -57,7 +63,9 @@ const ConceptCard = forwardRef<HTMLDivElement, ConceptCardProps>(
       >
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.explanation}>{explanation}</p>
-        {difficulty && <p className={styles.difficulty}>Difficulty: {difficulty}</p>}
+        {difficulty && (
+          <p className={styles.difficulty}>Difficulty: {difficulty}</p>
+        )}
         {importance !== undefined && (
           <p className={styles.importance}>Importance: {importance}</p>
         )}

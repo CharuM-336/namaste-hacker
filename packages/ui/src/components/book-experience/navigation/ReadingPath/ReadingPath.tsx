@@ -1,7 +1,11 @@
 // src/components/book-experience/navigation/ReadingPath/ReadingPath.tsx
 import React, { forwardRef, memo } from "react";
 import { Box } from "@namaste-hacker/ui/design-system/primitives/Box";
-import { colors, spacing, radius } from "@namaste-hacker/ui/design-system/tokens";
+import {
+  colors,
+  spacing,
+  radius,
+} from "@namaste-hacker/ui/design-system/tokens";
 import styles from "./ReadingPath.module.css";
 
 export interface ReadingPathItem {
@@ -37,13 +41,15 @@ const ReadingPath = forwardRef<HTMLDivElement, ReadingPathProps>(
               ) : (
                 <span className={styles.text}>{item.label}</span>
               )}
-              {idx < items.length - 1 && <span className={styles.separator}>/</span>}
+              {idx < items.length - 1 && (
+                <span className={styles.separator}>/</span>
+              )}
             </li>
           ))}
         </ul>
       </Box>
     );
-  }
+  },
 );
 
 export default memo(ReadingPath);

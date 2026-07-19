@@ -1,13 +1,13 @@
 // src/components/experience/ArrivalHero/ArrivalHero.tsx
-import React from 'react';
+import React from "react";
 import { Box } from "@namaste-hacker/ui/design-system/primitives/Box";
-import styles from './ArrivalHero.module.css';
+import styles from "./ArrivalHero.module.css";
 
 export interface ArrivalHeroProps {
   title: string;
   subtitle?: string;
   backgroundImage?: string;
-  variant?: 'default' | 'compact';
+  variant?: "default" | "compact";
   className?: string;
   style?: React.CSSProperties;
 }
@@ -16,7 +16,7 @@ export const ArrivalHero: React.FC<ArrivalHeroProps> = ({
   title,
   subtitle,
   backgroundImage,
-  variant = 'default',
+  variant = "default",
   className,
   style,
 }) => {
@@ -27,7 +27,7 @@ export const ArrivalHero: React.FC<ArrivalHeroProps> = ({
 
   return (
     <section
-      className={`${styles.container} ${styles[variant]} ${className ?? ''}`}
+      className={`${styles.container} ${styles[variant]} ${className ?? ""}`}
       style={containerStyle}
     >
       <h1 className={styles.title}>{title}</h1>
